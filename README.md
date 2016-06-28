@@ -1,6 +1,6 @@
 # redux-q
 
-> Provides a queue of callbacks to be invoked when an action is dispatched
+> Provides a way to queue callbacks until an action is dispatched.
 
 
 ## Overview
