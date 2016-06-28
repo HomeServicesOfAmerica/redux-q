@@ -1,0 +1,29 @@
+{
+  "name": "redux-q",
+  "version": "0.1.0",
+  "description": "Enqueue any function to be called the next time a specific action is dispatched",
+  "main": "dist.js",
+  "scripts": {
+    "test": "npm run build && mocha test",
+    "build": " babel index.js --out-file dist.js",
+    "prepublish": "npm run test"
+  },
+  "keywords": [
+    "redux",
+    "enqueue",
+    "queue",
+    "async",
+    "react"
+  ],
+  "author": "Brandon Dail <cottoncrypt@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-plugin-transform-flow-strip-types": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "redux": "^3.5.2",
+    "sinon": "^1.17.4"
+  }
+}
