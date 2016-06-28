@@ -68,7 +68,7 @@ middleware when creating your store.
 
 ```js
 
-import { queueMiddleware } from ''
+import { queueMiddleware } from 'redux-q'
 createStore(
   rootReducer,
   applyMiddleware(
