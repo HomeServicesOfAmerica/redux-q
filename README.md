@@ -12,9 +12,6 @@ Using a queue like this lets you avoid having to do conditional checks
 in middleware if you need to wait for some action (like the user profile being returned from your API). This is especially useful in combination with thunks,
 as you can check the current store state and either enqueue or perform
 and action.
-___
-
-* This project is still in pre-release stage and corner cases are sure to arise
 
 ## Install
 
