@@ -71,5 +71,15 @@ describe('redux-q', () => {
       expect(callback.calledThrice).to.equal(true)
       expect(queueMap[DECREMENT].length).to.equal(0)
     })
+    it('should process callbacks as a FIFO queue', () => {
+      var calls = []
+      const first = () => calls.push('first')
+      const second = () => calls.push('second')
+      enqueue(first, INCREMENT)
+      enqueue(second, INCREMENT)
+      store.dispatch({ type: INCREMENT })
+      expect(calls[0]).to.equal('first')
+      expect(calls[1]).to.equal('second')
+    })
   })
 })
