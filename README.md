@@ -1,5 +1,7 @@
 # redux-q
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ConciergeAuctions/redux-q.svg)](https://greenkeeper.io/)
+
 > Provides a way to queue callbacks until an action is dispatched.
 
 
