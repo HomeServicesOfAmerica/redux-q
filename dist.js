@@ -31,6 +31,11 @@ var dequeue = exports.dequeue = function dequeue(callbacks, actionType) {
   return queueMap;
 };
 
+var clearQueue = exports.clearQueue = function clearQueue(actionType) {
+  queueMap[actionType] = [];
+  return queueMap;
+};
+
 var queueMiddleware = exports.queueMiddleware = function queueMiddleware() {
   return function (next) {
     return function (action) {

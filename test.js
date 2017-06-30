@@ -2,7 +2,7 @@ const expect = require('chai').expect
 const sinon = require('sinon')
 
 const { createStore, applyMiddleware } = require('redux')
-const { enqueue, dequeue, queueMiddleware, queueMap } = require('./dist')
+const { enqueue, dequeue, queueMiddleware, queueMap, clearQueue } = require('./dist')
 
 
 const INCREMENT = 'INCREMENT'
@@ -68,6 +68,17 @@ describe('redux-q', () => {
       queueMap[INCREMENT] = [func, func2, func3, func4]
       dequeue([func, func2], INCREMENT)
       expect(queueMap[INCREMENT]).to.deep.equal([func3, func4]);
+    })
+  })
+
+  describe('clearQueue', () => {
+    const func = () => {console.log('func1')}
+    const func2 = () => {console.log('func2')}
+    
+    it('should clear the queue of a given action', () => {
+      queueMap[INCREMENT] = [func, func2]
+      clearQueue(INCREMENT)
+      expect(queueMap[INCREMENT].length).to.equal(0)
     })
   })
 

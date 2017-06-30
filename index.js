@@ -35,6 +35,14 @@ export const dequeue = (
   return queueMap
 }
 
+export const clearQueue = (
+  actionType: string
+): typeof queueMap => {
+  queueMap[actionType] = []
+  return queueMap
+}
+
+
 export const queueMiddleware: middleware = () => next => action => {
   const { type } = action
   if (queueMap[type]) {
