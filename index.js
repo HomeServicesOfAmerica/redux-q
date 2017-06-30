@@ -21,6 +21,20 @@ export const enqueue = (
   return queueMap
 }
 
+export const dequeue = (
+  callbacks: enqueueCallbacks,
+  actionType: string
+): typeof queueMap => {
+  let queue: callbackQueue = queueMap[actionType]
+  if (queue === undefined) return null
+  queueMap[actionType] = queue.filter(
+    Array.isArray(callbacks)
+      ? callback => callbacks.indexOf(callback) === -1
+      : callback => callback !== callbacks
+  );
+  return queueMap
+}
+
 export const queueMiddleware: middleware = () => next => action => {
   const { type } = action
   if (queueMap[type]) {
