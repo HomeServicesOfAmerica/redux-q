@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run build && mocha test",
     "build": " babel index.js --out-file dist.js",
-    "prepublish": "npm run test"
+    "prepublish": "npm run test && npm run build"
   },
   "keywords": [
     "redux",
