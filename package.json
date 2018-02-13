@@ -1,6 +1,6 @@
 {
   "name": "redux-q",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Enqueue any function to be called the next time a specific action is dispatched",
   "main": "dist.js",
   "scripts": {
