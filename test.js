@@ -2,7 +2,7 @@ const expect = require('chai').expect
 const sinon = require('sinon')
 
 const { createStore, applyMiddleware } = require('redux')
-const { enqueue, queueMiddleware, queueMap } = require('./dist')
+const { enqueue, dequeue, queueMiddleware, queueMap, clearQueue } = require('./dist')
 
 
 const INCREMENT = 'INCREMENT'
@@ -50,6 +50,35 @@ describe('redux-q', () => {
       expect(queueMap[INCREMENT].length).to.equal(2)
       expect(queueMap[INCREMENT][0]).to.equal(func)
       expect(queueMap[INCREMENT][1]).to.equal(func)
+    })
+  })
+
+  describe('dequeue', () => {
+    const func = () => {console.log('func1')}
+    const func2 = () => {console.log('func2')}
+    const func3 = () => {console.log('func3')}
+    const func4 = () => {console.log('func1')}
+    it('should dequeue the specified callback from the queueMap', () => {
+      queueMap[INCREMENT] = [func, func2]
+      dequeue(func, INCREMENT)
+      expect(queueMap[INCREMENT][0]).to.equal(func2)
+    })
+
+    it('should dequeue arrays of callbacks from the queueMap', () => {
+      queueMap[INCREMENT] = [func, func2, func3, func4]
+      dequeue([func, func2], INCREMENT)
+      expect(queueMap[INCREMENT]).to.deep.equal([func3, func4]);
+    })
+  })
+
+  describe('clearQueue', () => {
+    const func = () => {console.log('func1')}
+    const func2 = () => {console.log('func2')}
+    
+    it('should clear the queue of a given action', () => {
+      queueMap[INCREMENT] = [func, func2]
+      clearQueue(INCREMENT)
+      expect(queueMap[INCREMENT].length).to.equal(0)
     })
   })
 
