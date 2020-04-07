@@ -1,3 +1,5 @@
+# No Longer Maintained
+
 # redux-q
 
 > Provides a way to queue callbacks until an action is dispatched.
